@@ -1,0 +1,23 @@
+Actor (Tom_Cruise)
+Actor (Brad_pitt)
+Actor (Leonardo_DiCaprio)
+Actor (Jennifer_Lawrence)
+Actor (Al_Pacino)
+
+Director (Nolan)
+Director (Tarantino)
+Director (Tim_Burton)
+Director (James_Cameron)
+Director (Ridley_Scott)
+
+top_films(Tom_Cruise, [Top_Gun, Jerry_Maguire, Mission_Impossible]).
+top_films(Brad_Pitt, [Fight_Club, Once_Upon_a_Time_in_Hollywood, Inglourious_Basterds]).
+top_films(Leonardo_DiCaprio, [Titanic, The_Wolf_of_Wall_Street, Inception]).
+top_films(Jennifer_Lawrence, [The_Hunger_Games, Silver_Linings_Playbook, American_Hustle]).
+top_films(Al_Pacino, [The_Godfather, The_Godfather_Part_II, Scarface]).
+
+top_films(Nolan, [The_Dark_Knight, Inception, Dunkirk]).
+top_films(Tarantino, [Pulp_Fiction, Inglourious_Basterds, Kill_Bill]).
+top_films(Tim_Burton, [Edward_Scissorhands, The_Nightmare_Before_Christmas, Beetlejuice]).
+top_films(James_Cameron, [Titanic, Avatar, Terminator_2_Judgment_Day]).
+top_films(Ridley_Scott, [Blade_Runner, Alien, Gladiator]).
