@@ -11,9 +11,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import speech_recognition as sr
 import pyttsx3
-from nltk.sem import Expression
-from nltk.inference import ResolutionProver
-read_expr = Expression.fromstring
+
 
 APIkey = "5403a1e0442ce1dd18cb1bf7c40e776f" 
 
@@ -21,15 +19,64 @@ kern = aiml.Kernel()
 kern.setTextEncoding(None)
 kern.bootstrap(learnFiles="mybot-basic.xml")
 
-#  Initialise Knowledgebase. 
-import pandas
-kb=[]
-data = pandas.read_csv('kb.csv', header=None)
-[kb.append(read_expr(row)) for row in data[0]]
-# >>> ADD SOME CODES here for checking KB integrity (no contradiction), 
-# otherwise show an error message and terminate
+from nltk.sem import Expression
+from nltk.inference import ResolutionProver
+from nltk.sem.logic import LogicParser
+read_expr = Expression.fromstring
 
+# Load the knowledge base from a CSV file
+kb = []
+with open('kb.csv', 'r') as data:
+    kb = [read_expr(row) for row in data.readlines()]
 
+    # for line in f:
+    #     kb.append(read_expr())
+    #     # expr = LogicParser().parse(line.strip())
+    #     # kb.append(expr)
+
+# Check KB for consistency/ no contradiction
+prover = ResolutionProver()
+contradiction = []
+consistent = []
+for expr in kb:
+    if prover.prove(Expression.fromstring(f'~({expr})')):
+        contradiction.append(expr)
+        #print(f"Contradiction found with {expr}")
+    else:
+        consistent.append(expr)
+        #print(f"{expr} is consistent with the KB")
+if len(contradiction) >= 1: 
+    for expr in contradiction:
+        print(f"Contradiction found with {expr}")
+    
+
+# Handle user inputs
+while True:
+    user_input = input('Enter a statement: ')
+    if user_input == 'quit':
+        break
+    elif user_input.startswith('I know that '):
+        statement = user_input[12:]
+        subject, _, obj = statement.partition(' is ')
+        expr = read_expr(subject + '(' + obj + ')')
+        answer = ResolutionProver().prove_not(expr, kb, verbose=True)
+        if answer:
+            kb.append(expr) 
+            print('OK, I will remember that', obj, 'is', subject)
+        else:
+            print('That statement contradicts the KB')
+    elif user_input.startswith('Check that '):
+        statement = user_input[11:]
+        expr = LogicParser().parse(statement)
+        prover = ResolutionProver(kb)
+        if prover.prove(Expression.fromstring(statement)):
+            print('Correct')
+        elif prover.prove_not(Expression.fromstring(statement)):
+            print('Incorrect')
+        else:
+            print('I don\'t know')
+    else:
+        print('I didn\'t understand that')  
 
 
 # Read the CSV file and separate questions and answers
