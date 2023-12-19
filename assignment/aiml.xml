@@ -40,14 +40,6 @@
 <category> <pattern> CHEERS * </pattern>
   <template>Sure mate.</template></category>
 
-<!-- Logic input -->
-<category><pattern> I KNOW THAT * IS *</pattern>
-  <template>#31$<star index="1"/> is <star index="2"/></template></category>  
-
-<category><pattern> CHECK THAT * IS *</pattern>
-  <template>#32$<star index="1"/> is <star index="2"/></template></category>  
-
-
 <!-- Weather API -->
 <category><pattern> WHAT IS THE WEATHER LIKE IN * </pattern>
   <template>#2$<star/></template></category>
@@ -71,18 +63,40 @@
 <category><pattern> WHO IS * </pattern>
   <template><srai>WHAT IS A <star/></srai></template></category>
 
-<!-- Rotten Tomatoes API -->
-<category><pattern>WHAT ARE THE TOP RATED MOVIES?</pattern>
-<template>Here are the top rated movies according to Rotten Tomatoes: #rotten_tomatoes_top_movies()</template></category>
+<!-- Movie Database API -->
+<category><pattern> WHAT MOVIES ARE SIMILAR TO * </pattern>
+  <template>#3$<star index="1"/></template></category>
 
-<category><pattern>WHAT IS THE RATING FOR *</pattern>
-<template>The Rotten Tomatoes rating for <star/> is #rotten_tomatoes_rating(<star/>).</template></category>
+<category><pattern> WHAT MOVIE IS SIMILAR TO * </pattern>
+  <template><srai>WHAT MOVIES ARE SIMILAR TO <star/></srai></template></category>
 
-<category><pattern>WHAT ARE THE REVIEWS FOR *</pattern>
-<template>Here are some of the reviews for <star/>: #rotten_tomatoes_reviews(<star/>)</template></category>
+<category><pattern> WHAT FILM IS SIMILAR TO * </pattern>
+  <template><srai>WHAT MOVIES ARE SIMILAR TO <star/></srai></template></category>
 
-<category><pattern>WHAT ARE SOME SIMILAR MOVIES TO *</pattern>
-<template>Here are some similar movies to <star/> according to Rotten Tomatoes: #rotten_tomatoes_similar_movies(<star/>)</template></category>
+<category><pattern> WHAT FILMS ARE SIMILAR TO * </pattern>
+  <template><srai>WHAT MOVIES ARE SIMILAR TO <star/></srai></template></category>
+
+<category><pattern> SIMILAR FILM TO * </pattern>
+  <template><srai>WHAT MOVIES ARE SIMILAR TO <star/></srai></template></category>
+
+<category><pattern> SIMILAR MOVIE TO * </pattern>
+  <template><srai>WHAT MOVIES ARE SIMILAR TO <star/></srai></template></category>
+
+<category><pattern> SIMILAR MOVIES TO * </pattern>
+  <template><srai>WHAT MOVIES ARE SIMILAR TO <star/></srai></template></category>
+
+<category><pattern> SIMILAR FILMS TO * </pattern>
+  <template><srai>WHAT MOVIES ARE SIMILAR TO <star/></srai></template></category>
+
+<category><pattern> FILMS SIMILAR TO * </pattern>
+  <template><srai>WHAT MOVIES ARE SIMILAR TO <star/></srai></template></category>
+
+<category><pattern> MOVIES SIMILAR TO * </pattern>
+  <template><srai>WHAT MOVIES ARE SIMILAR TO <star/></srai></template></category>
+
+<!-- Image to text translator -->
+<category><pattern> SHOW TEXT FROM IMAGE IN * </pattern>
+  <template>#4$<star index="1"/></template></category>
 
 <!-- Default reaction -->
 <category><pattern> * </pattern>
@@ -91,45 +105,43 @@
 <!-- Film Topic -->
 <category>
   <pattern>FILMS WITH TOM CRUISE</pattern>
-  <template>Tom Cruise's top 3 films are "Top Gun", "Jerry Maguire", and "Mission: Impossible".</template>
+  <template>Tom Cruise's top 3 films are "Top Gun", "Jerry Maguire" and "Mission: Impossible".</template>
 </category>
 <category>
   <pattern>FILMS WITH BRAD PITT</pattern>
-  <template>Brad Pitt's top 3 films are "Fight Club", "Once Upon a Time in Hollywood", and "Inglourious Basterds".</template>
+  <template>Brad Pitt's top 3 films are "Fight Club", "Once Upon a Time in Hollywood" and "Inglourious Basterds".</template>
 </category>
 <category>
   <pattern>FILMS WITH LEONARDO DICAPRIO</pattern>
-  <template>Leonardo DiCaprio's top 3 films are "Titanic", "The Wolf of Wall Street", and "Inception".</template>
+  <template>Leonardo DiCaprio's top 3 films are "Titanic", "The Wolf of Wall Street" and "Inception".</template>
 </category>
 <category>
   <pattern>FILMS WITH JENNIFER LAWRENCE</pattern>
-  <template>Jennifer Lawrence's top 3 films are "The Hunger Games", "Silver Linings Playbook", and "American Hustle".</template>
+  <template>Jennifer Lawrence's top 3 films are "The Hunger Games", "Silver Linings Playbook" and "American Hustle".</template>
 </category>
 <category>
   <pattern>FILMS WITH AL PACINO</pattern>
-  <template>Al Pacino's top 3 films are "The Godfather", "The Godfather Part II", and "Scarface".</template>
+  <template>Al Pacino's top 3 films are "The Godfather", "The Godfather Part II" and "Scarface".</template>
 </category>
 <category>
   <pattern>FILMS BY NOLAN</pattern>
-  <template>Director Nolan's top 3 films are "The Dark Knight", "Inception", and "Dunkirk".</template>
+  <template>Director Nolan's top 3 films are "The Dark Knight", "Inception" and "Dunkirk".</template>
 </category>
 <category>
   <pattern>FILMS BY TARANTINO</pattern>
-  <template>Director Tarantino's top 3 films are "Pulp Fiction", "Inglourious Basterds", and "Kill Bill".</template>
+  <template>Director Tarantino's top 3 films are "Pulp Fiction", "Inglourious Basterds" and "Kill Bill".</template>
 </category>
 <category>
   <pattern>FILMS BY TIM BURTON</pattern>
-  <template>Director Tim Burton's top 3 films are "Edward Scissorhands", "The Nightmare Before Christmas", and "Beetlejuice".</template>
+  <template>Director Tim Burton's top 3 films are "Edward Scissorhands", "The Nightmare Before Christmas" and "Beetlejuice".</template>
 </category>
 <category>
   <pattern>FILMS BY JAMES CAMERON</pattern>
-  <template>Director James Cameron's top 3 films are "Titanic", "Avatar", and "Terminator 2: Judgment Day".</template>
+  <template>Director James Cameron's top 3 films are "Titanic", "Avatar" and "Terminator 2: Judgment Day".</template>
 </category>
 <category>
   <pattern>FILMS BY RIDLEY SCOTT</pattern>
-  <template>Director Ridley Scott's top 3 films are "Blade Runner", "Alien", and "Gladiator".</template>
+  <template>Director Ridley Scott's top 3 films are "Blade Runner", "Alien" and "Gladiator".</template>
 </category>
-
-
 
 </aiml>
